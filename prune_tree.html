@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  
+    <title>11-785 Deep Learning</title>
+    
+	<!-- the main css locally done-->
+    <link href="main_pd.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body>
+	<div id='wrapper'>
+		<!-- Keeps the header title of the page -->
+		<div class="container-titlebar">
+			<div class="row">
+				<div class="title-col-vcenter">   
+					<div class="title"><b>11-785</b> Introduction to Deep Learning</div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<!-- Keeps the Navigation bar in the page -->
+		<div class="container">
+			<div id="navigation-left" class="nav nav-pills nav-stacked"><!--BEGINNING OF NAVIGATION-LEFT DIV-->  
+					  <div id="nav"><!--BEGINNING OF NAV DIV-->
+							<ul><!--Convert to an unordered list-->
+							   <li><a href="beam_search_overview.html">Beam Search Overview</a></li>
+							   <li><a href="mainstructure.html">mainstructure</a></li>
+							   <li><a href="InitializePaths.html">Initialize paths</a></li>
+							   <li><a href="Extending_with_blanks.html">Extending with blanks</a></li>
+							   <li><a href="Extending_with_symbols.html">Extending with symbols</a></li>
+							   <li><a href="prune_tree.html">Pruning low-scoring entries</a></li>
+							   <li><a href="merge_paths.html">Merging final paths</a></li>
+					   </ul>	
+				   </div><!--END OF NAV DIV-->
+			</div><!--END OF NAVIGATION-LEFT DIV-->
+	
+			<div id="content">
+				<h1 align="Center">Pruning Low-Scoring Entries</h1> 
+				<table align="center">   <!--The table  contains the initial two images of the tree representation graph  -->
+					<tbody>
+					<tr>
+						<figure align="center">
+							<img src="..\beamsearch_pseudocode\images\Prune_tree_graphs.gif" style="width:650px;height:380px;"  alt="initial paths in the tree">
+							<figcaption>
+								<p>Prune tree graph</p>
+							</figcaption>
+						</figure> <!--Figure1-->
+					</tr>
+						<br>
+					<tr>
+					<pre>
+					<font color="blue">Global</font> PathScore, BlankPathScore
+					<font color="blue">function</font> Prune(PathsWithTerminalBlank, PathsWithTerminalSymbol, BlankPathScore, PathScore, BeamWidth)
+						PrunedBlankPathScore = []
+						PrunedPathScore = []
+						<font color="green"># First gather all the relevant scores</font>
+						i = 1
+						<font color="blue">for</font> p <font color="blue">in</font> PathsWithTerminalBlank
+							scorelist[i] = BlankPathScore[p]
+							i++
+						<font color="blue">end</font>
+						<font color="blue">for</font> p <font color="blue">in</font> PathsWithTerminalSymbol
+							scorelist[i] = PathScore[p]
+							i++
+						<font color="blue">end</font>
+
+						<font color="green"># Sort and find cutoff score that retains exactly BeamWidth paths</font>
+						sort(scorelist)  <font color="green"># In decreasing order</font>
+						cutoff = BeamWidth <font color="red"> ></font> length(scorelist) <font color="red">?</font>  scorelist[BeamWidth] <font color="red">:</font> scorelist[end]
+
+						PrunedPathsWithTerminalBlank = {}
+						<font color="blue">for</font> p <font color="blue">in</font> PathsWithTerminalBlank
+							<font color="blue">if</font> BlankPathScore[p] >= cutoff
+								PrunedPathsWithTerminalBlank += p <font color="green"># Set addition</font>
+								PrunedBlankPathScore[p] = BlankPathScore[p]
+							<font color="blue">end</font>
+						<font color="blue">end</font>
+
+						PrunedPathsWithTerminalSymbol = {}
+						<font color="blue">for</font> p <font color="blue">in</font> PathsWithTerminalSymbol
+							<font color="blue">if</font> PathScore[p] >= cutoff
+								PrunedPathsWithTerminalSymbol += p <font color="green"># Set addition</font>
+								PrunedPathScore[p] = PathScore[p]
+							<font color="blue">end</font>
+						<font color="blue">end</font>
+
+					<font color="blue">return</font> PrunedPathsWithTerminalBlank, PrunedPathsWithTerminalSymbol, PrunedBlankPathScore, PrunedPathScore
+					</pre>					
+					</tr>		
+				</table>	
+			<div>  <!--END OF CONTENT DIV-->
+		</div> <!--END OF CONTAINER DIV-->
+	</div> <!--END OF WRAPPER DIV-->	
+	
+	</body>
+</html>

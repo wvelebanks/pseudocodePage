@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-785 Deep Learning</title>
+
+	<!-- the main css locally done-->
+    <link href="main_pd.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body>
+	<div id='wrapper'>
+		<!-- Keeps the header title of the page -->
+		<div class="container-titlebar">
+			<div class="row">
+				<div class="title-col-vcenter">   
+					<div class="title"><b>11-785</b> Introduction to Deep Learning</div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<!-- Keeps the Navigation bar in the page -->
+		<div class="container">
+			<div id="navigation-left" class="nav nav-pills nav-stacked"><!--BEGINNING OF NAVIGATION-LEFT DIV-->  
+					  <div id="nav"><!--BEGINNING OF NAV DIV-->
+							<ul><!--Convert to an unordered list-->
+							   <li><a href="beam_search_overview.html">Beam Search Overview</a></li>
+							   <li><a href="mainstructure.html">mainstructure</a></li>
+							   <li><a href="InitializePaths.html">Initialize paths</a></li>
+							   <li><a href="Extending_with_blanks.html">Extending with blanks</a></li>
+							   <li><a href="Extending_with_symbols.html">Extending with symbols</a></li>
+							   <li><a href="prune_tree.html">Pruning low-scoring entries</a></li>
+							   <li><a href="merge_paths.html">Merging final paths</a></li>
+					   </ul>	
+				   </div><!--END OF NAV DIV-->
+			</div><!--END OF NAVIGATION-LEFT DIV-->
+	
+	
+			<div id="content">
+					<br> <h1 align="Center">Beam Search Algorithm</h1> <br>
+					<table align="center">   <!--The table  contains the initial two images of the tree representation graph  -->
+					<tbody>
+					<tr>
+						<td> 
+							<figure align="center">  
+								<img src="..\beamsearch_pseudocode\images\Initial_tree_graph.PNG" alt="Beam Search Tree graph">
+							   <figcaption>
+									Initial Beam Search Tree Graph
+							   </figcaption>
+							</figure>
+						</td> <!--Figure1-->
+						<td>
+							<figure align="center">
+								<img src="..\beamsearch_pseudocode\images\tree_graph2.PNG" alt="Beam Search Tree graph with end nodes">
+							   <figcaption>
+									<p>The symbol sequences to the right, uniquely represents each node in the X<sub>4</sub> column. The symbol sequence shown,
+									   carries the total score for that symbol sequence</p>
+							   </figcaption>
+							</figure>
+						</td> <!--Figure2-->
+					</tr>
+				</table>
+				
+				<h2>Overview</h2>
+				<p>The goal of the optimal decoder is to find the <q>most likely</q> output symbol sequence for the input. However, there are an exponentially 
+				   large number of such sequences and they cannot all be evaluated.</p>
+				 
+				   E.g.  if you have a symbol set of 100 symbols,  and produce a sequence of 30 symbols (e.g. a sentence with 30 characters in it),
+						 the number of possible sequences to evaluate before selecting the most likely one is 100<sup>30</sup>.</p>
+				<p>Beam search provides a practical solution to this by incrementally selecting only the K-most-likely symbols at each stage.
+				   So, that way, if you are outputting a sequence of 30 symbols, at each time, you retain the K most likely sequences so far,  
+				   expand it out to K*V  <i>(V = vocab size, 100 in our example)</i> and reduce it back to K by retaining the K most likely.</p>
+				   
+				<p>As a result,  each extension by 1 symbil takes  KV computations, and you can find a good guess for the most likely 30-symbol sequence in only 30KV 
+				   computations, which is exponentially cheaper than  full search.</p><br>
+				
+			</div>  <!--END OF CONTENT DIV-->			
+		</div> <!--END OF CONTAINER DIV-->
+	</div> <!--END OF WRAPPER DIV-->	
+</body>
+</html>
+

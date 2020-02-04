@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-785 Deep Learning</title>
+   
+	<!-- the main css locally done-->
+    <link href="main_pd.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body>
+	<div id='wrapper'>
+		<!-- Keeps the header title of the page -->
+		<div class="container-titlebar">
+			<div class="row">
+				<div class="title-col-vcenter">   
+					<div class="title"><b>11-785</b> Introduction to Deep Learning</div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<!-- Keeps the Navigation bar in the page -->
+		<div class="container">
+			<div id="navigation-left" class="nav nav-pills nav-stacked"><!--BEGINNING OF NAVIGATION-LEFT DIV-->  
+					  <div id="nav"><!--BEGINNING OF NAV DIV-->
+							<ul><!--Convert to an unordered list-->
+							   <li><a href="beam_search_overview.html">Beam Search Overview</a></li>
+							   <li><a href="mainstructure.html">mainstructure</a></li>
+							   <li><a href="InitializePaths.html">Initialize paths</a></li>
+							   <li><a href="Extending_with_blanks.html">Extending with blanks</a></li>
+							   <li><a href="Extending_with_symbols.html">Extending with symbols</a></li>
+							   <li><a href="prune_tree.html">Pruning low-scoring entries</a></li>
+							   <li><a href="merge_paths.html">Merging final paths</a></li>
+					   </ul>	
+				   </div><!--END OF NAV DIV-->
+			</div><!--END OF NAVIGATION-LEFT DIV-->
+	
+			<div id="content">
+				<h1 align="Center">Initialize paths</h1> 
+				<table align="center">   <!--The table  contains the initial two images of the tree representation graph  -->
+					<tbody>
+					<tr>
+						<figure align="center">
+							<img src="..\beamsearch_pseudocode\images\initial_paths.gif" style="width:650px;height:380px;"  alt="initial paths in the tree">
+							<figcaption>
+								<p>initilizes paths in the tree graph by taking the initial subtree</p>
+							</figcaption>
+						</figure> <!--Figure1-->
+					</tr>
+						<br>
+					<tr>
+					<pre>
+					<font color="blue">function</font> InitializePaths(SymbolSet, y)
+						InitialBlankPathScore = [],  InitialPathScore = []
+						<font color="green"># First push the blank into a path-ending-with-blank stack. No symbol has been invoked yet </font>
+						path = <font color="blue">null</font>
+						InitialBlankPathScore[path] = y[blank]  <font color="green"># Score of blank at t=1</font>
+						InitialPathsWithFinalBlank = {path}
+
+						<font color="green"># Push rest of the symbols into a path-ending-with-symbol stack</font>
+						InitialPathsWithFinalSymbol = {}
+						<font color="blue">for</font> c <font color="blue">in</font> SymbolSet  <font color="green">## This is the entire symbol set, without the blank</font>
+							path = c
+							InitialPathScore[path] = y[c]  <font color="green">## Score of symbol c at t=1</font>
+							InitialPathsWithFinalSymbol += path <font color="green">## Set addition</font>
+						<font color="blue">end </font>
+
+					<font color="blue">return</font> InitialPathsWithFinalBlank, InitialPathsWithFinalSymbol, InitialBlankPathScore, InitialPathScore
+					</pre>					
+					</tr>		
+				</table>	
+			<div>  <!--END OF CONTENT DIV-->
+		</div> <!--END OF CONTAINER DIV-->
+	</div> <!--END OF WRAPPER DIV-->	
+	
+	</body>
+</html>
+					
+				
+			

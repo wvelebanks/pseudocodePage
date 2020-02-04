@@ -1,0 +1,306 @@
+@charset "utf-8";
+
+/* Regular Headings */
+
+h1{
+	color: #b05145;
+	font-size:150%;
+  }	
+
+
+ h2 {
+	 color: #b05145;
+     font-size:120%;
+    }
+
+
+h3 {
+     color: #bf766d;
+     font-weight: 300;
+   }
+
+
+
+/*header of the page */
+
+#wrapper .container-titlebar .row .title-col-vcenter .title{
+	
+	font-family: 'Open Sans', sans-serif;
+	color:#A80000;
+	font-weight:bold;
+	text-align:center;
+	width:100%;
+	font-size:180%;	
+} 
+
+
+/* general content size */
+#wrapper .container{
+	
+	  font-family: 'Open Sans', sans-serif;
+      font-size: 1em;
+      font-weight: 300;
+      text-align: justify;
+	
+}
+
+
+.container #content{
+	float:right;
+	width:82%;   
+	background-color: #FFFFFF;
+	height:800px;
+}
+
+
+#wrapper,  a, a:hover {
+            color: #b05145;
+        }
+
+
+
+#wrapper .container #content{
+	color: #6F6A6A;
+}
+
+
+#wrapper .container #content figure figcaption{
+	color: #6F6A6A;
+	font-size: 75%;
+}
+
+
+
+#wrapper .container #content figure img{
+	 width: 100%;
+	 height: 60%;
+}
+
+
+/*Hedings inside content */
+.container #content h1{
+	color: #b05145;
+	font-size:120%;
+  }	
+
+
+.container #content  h2 {
+	 color: #b05145;
+     font-size:120%;
+    }
+
+
+.container #content h3 {
+     color: #bf766d;
+     /*font-weight: 300;*/
+   }
+
+.container #content figure img{
+ width: 100%;
+ height: 60%;	
+}
+
+ .container table tr pre {
+   font-family: monospace; 
+   font-size: 1.4rem;
+   margin: 0;
+} 
+
+/*.container pre  code{
+ /*font-family: monospace; *
+   font-size: 1.2rem;
+   margin: 0;
+   padding:0;
+}  */
+
+
+
+
+/* .container #content table tr td figure img{
+ width: 100%;
+ height: 60%;	
+} */
+
+
+
+/* .container code {
+  font-family: monospace;
+  font-size: 120%;
+}*/ 
+
+
+
+
+
+
+
+
+
+
+
+/* -----------------------------  Navigation Bar ------------------------------------*/ 
+
+#wrapper #navigation-left {
+float:left;
+width:18%;
+background-color: #FFFFFF;   /*#700A0A;*/    
+height:800px;
+}
+
+
+#wrapper #navigation-left #nav {
+width:100%;
+background-color: #FFFFFF;
+
+}
+
+
+#wrapper #navigation-left #nav ul li.listlg {
+	line-height: 22px;
+}
+
+
+#wrapper #navigation-left #nav ul {
+	list-style-type: none;
+	padding: 0px 15px 15px 10px;
+	margin-left: 5px;
+}
+
+
+#wrapper #navigation-left #nav ul li {
+	border-bottom: 2px solid #B1AE00;
+	line-height: 70px;
+}
+
+
+#wrapper #navigation-left #nav ul li a, #navigation-left #nav a:visited {
+ text-decoration:none;
+ padding-top: 5px;
+ padding-bottom: 5px;
+ padding-right: 5px;
+ padding-left: 10px;
+ background-color: #700A0A; /*#A58514;*/
+ display: block;
+ color: #FFFFFF;
+ font-style:bold;
+}
+
+
+
+#wrapper #navigation-left #nav ul li a:active, #navigation-left #nav ul li a:hover {
+text-decoration:none;
+padding-top:5px;
+padding-bottom:5px;
+padding-right:5px;
+padding-left:15px;
+background-color:#EEE8AA; /*#FDAC03;*/
+display:block;
+color:#383838;
+font-style: italic bold;
+}
+
+
+#wrapper #navigation-left #nav h2 {
+	font-family: Palatino Linotype, Book Antiqua, Palatino, serif 2.2em "Trebuchet MS";  /*"Trebuchet MS", Arial, Helvetica, sans-serif;*/
+	color: #FFFFFF;
+	margin-bottom: 0px;
+	background-color: #700A0A;
+}
+
+
+#wrapper #navigation-left #nav p {
+	font: bold .8em/175% Palatino Linotype, Book Antiqua, Palatino, serif "Trebuchet MS";  /* Tahoma, Geneva, sans-serif; */
+	color: #FFFFFF;
+	padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.5em;
+        font-weight: 300;
+        text-align: justify;
+    }
+
+	
+ .container {
+            max-width: 1250px;
+            padding-left: 20px;
+            padding-right: 20px;
+           }
+
+
+ .container {
+            max-width: 1200px;
+            padding-left: 25px;
+            padding-right: 25px;
+           }
+
+
+
+  .ul {
+            list-style:square ;
+            padding-left: 1.3em;
+        }
+   li{
+	   margin-bottom: 0.5em;
+    }
+	
+pre {
+    white-space: pre;
+   } */
+	
+
+
+
+
+
+
+
+/* /* 
+
+
+
+ */ 
+
+
+
+
+/* #wrapper #content {
+float:left;
+width:80%;   
+background-color: #FFFFFF;
+height:800px; */
+
+
+
+
+/*.title-col-vcenter{
+	 color:#A80000;
+	 font-weight:bold;
+	 text-align:center;
+	 width:100%;
+	 font-size:180%;
+	 
+}*/

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11-785 Deep Learning</title>
+    
+	<!-- the main css locally done-->
+    <link href="main_pd.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div id='wrapper'>
+		<!-- Keeps the header title of the page -->
+		<div class="container-titlebar">
+			<div class="row">
+				<div class="title-col-vcenter">   
+					<div class="title"><b>11-785</b> Introduction to Deep Learning</div>
+				</div>
+			</div>
+		</div>
+	
+	
+		<!-- Keeps the Navigation bar in the page -->
+		<div class="container">
+			<div id="navigation-left" class="nav nav-pills nav-stacked"><!--BEGINNING OF NAVIGATION-LEFT DIV-->  
+					  <div id="nav"><!--BEGINNING OF NAV DIV-->
+							<ul><!--Convert to an unordered list-->
+							   <li><a href="beam_search_overview.html">Beam Search Overview</a></li>
+							   <li><a href="mainstructure.html">mainstructure</a></li>
+							   <li><a href="InitializePaths.html">Initialize paths</a></li>
+							   <li><a href="Extending_with_blanks.html">Extending with blanks</a></li>
+							   <li><a href="Extending_with_symbols.html">Extending with symbols</a></li>
+							   <li><a href="prune_tree.html">Pruning low-scoring entries</a></li>
+							   <li><a href="merge_paths.html">Merging final paths</a></li>
+					   </ul>	
+				   </div><!--END OF NAV DIV-->
+			</div><!--END OF NAVIGATION-LEFT DIV-->
+	
+			<div id="content">
+				<h1 align="Center">Beam Search: Main Structure</h1> 
+				<table align="center">   <!--The table  contains the initial two images of the tree representation graph  -->
+					<tbody>
+					<tr>
+						<figure align="center">
+							<img src="..\beamsearch_pseudocode\images\tree_graph2.PNG" style="width:650px;height:380px;"  alt="Beam Search Tree graph with end nodes">
+							<figcaption>
+								<p>The symbol sequences to the right, uniquely represents each node in the X<sub>4</sub> column. The symbol sequence shown,
+								carries the total score for that symbol sequence</p>
+							</figcaption>
+						</figure> <!--Figure1-->
+					</tr>
+						<br>
+					<tr>
+					  <pre>
+						<font color="blue">Global</font> PathScore = [], BlankPathScore = []
+						<font color="green"># First time instance: initialize paths with each of the symbols, </font>
+						<font color="green"># including blank, using score at time t=1 </font>
+														
+						PathsWithTerminalBlank, PathsWithTerminalSymbol, PathsScore, BlankPathScore =  <font color="blue"><strong>InitializePaths</strong></font>(SymbolSet,
+									y[:,0], BeamWidth)
+										
+						<font color="green"># Subsequent time steps </font>
+						<font color="blue">for</font> t = 1:T
+							<font color="green"># First extend paths by a blank </font>
+							UpdatedPathsWithTerminalBlank, UpdatedBlankPathScore = <font color="blue"><strong>ExtendWithBlank</strong></font>(PathsWithTerminalBlank,
+										PathsWithTerminalSymbol, y[:, t])
+																		
+							<font color="green"># Next extended paths by a symbol</font>
+							UpdatedPathsWithTerminalSymbol, UpdatedPathScore = <font color="blue"><strong>ExtendWithSymbol</strong></font>(PathsWithTerminalBlank,
+										PathsWithTerminalSymbol, SymbolSet, y[:,t])
+																		
+							<font color="green"># Prune te collection down to the beamwidth </font>
+							PathsWithTerminalBlank, PathsWithTerminalSymbol, PathsScore, BlankPathScore = 
+										<font color="blue"><strong>Prune</strong></font>(UpdatedPathsWithTerminalBlank, UpdatedPathsWithTerminalSymbol,
+												UpdatedBlankPathScore,UpdatedPathScore, BeamWidth)
+						<font color="blue">end</font>
+														
+						<font color="green"># merge identical paths differing only by the final blank</font>
+						MergePaths, FinalPahScore = <font color="blue"><strong>MergeIdenticalPaths</strong></font>(PathsWithTerminalBlank. PathsWithTerminalSymbol)
+													
+						<font color="green"># Pick best path</font>
+						BestPath = <font color="blue">argmax</font>(FinalPahScore)   <font color="green"># find the path with the best score</font>       
+					 </pre>					
+					</tr>		
+				</table>				
+			<div>  <!--END OF CONTENT DIV-->
+		</div> <!--END OF CONTAINER DIV-->
+	</div> <!--END OF WRAPPER DIV-->	
+	</body>
+</html>
